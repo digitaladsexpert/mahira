@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>My Billion Forex Trade™️ — Join Telegram</title>
+  <title>Mentor Mahira</title>
 
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
@@ -14,6 +14,8 @@
       padding:20px;
       display:flex;
       justify-content:center;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
     .wrap{
@@ -33,6 +35,7 @@
       border-radius:8px;
       font-weight:600;
       margin-bottom:12px;
+      font-size:14px;
     }
 
     .brand-row{
@@ -44,22 +47,65 @@
 
     .logo{
       width:60px;height:60px;border-radius:12px;background:#e9f6ff;overflow:hidden;
+      flex:0 0 60px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
     }
     .logo img{width:100%;height:100%;object-fit:cover}
 
+    /* NEW: full card profile image */
     .profile-snippet{
-      flex:1;background:#0b1220;color:#fff;border-radius:10px;
-      padding:8px;display:flex;gap:8px;align-items:center;font-size:13px;
+      position:relative;
+      width:100%;
+      height:180px;
+      border-radius:12px;
+      overflow:hidden;
+      background:#000;
     }
-    .profile-snippet img{
-      width:48px;height:48px;border-radius:100%;object-fit:cover;
+
+    .profile-snippet .full-img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1);
+      transition: transform .6s ease;
     }
-    .profile-info{display:flex;flex-direction:column;}
-    .profile-info .name{font-weight:700;font-size:14px;}
-    .profile-info .meta{font-size:12px;opacity:0.9}
+
+    .profile-snippet:hover .full-img{
+      transform: scale(1.03);
+    }
+
+    .profile-info-overlay{
+      position:absolute;
+      bottom:12px;
+      left:12px;
+      right:12px;
+      color:#fff;
+      background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.48));
+      padding:10px 12px;
+      border-radius:10px;
+      backdrop-filter: blur(4px);
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      align-items:flex-start;
+    }
+
+    .profile-info-overlay .name{
+      font-weight:800;
+      font-size:16px;
+      letter-spacing:0.2px;
+    }
+
+    .profile-info-overlay .meta{
+      font-size:12px;
+      opacity:0.95;
+    }
 
     .heading{text-align:center;margin:10px 0 6px;}
-    .heading h1{font-size:20px;line-height:1.2;}
+    .heading h1{font-size:20px;line-height:1.2;margin:0}
     .accent{color:#0aa3ff;font-weight:800;}
 
     .sub-title{text-align:center;color:#0b6b2e;font-weight:800;margin-bottom:8px;}
@@ -80,7 +126,6 @@
       font-size:18px;
       text-decoration:none;
       display:inline-block;
-
       box-shadow:0 0 20px rgba(11,123,43,0.4);
       animation: pulseBtn 2s infinite ease-in-out;
       transition: transform .2s ease, box-shadow .2s ease;
@@ -109,6 +154,8 @@
       padding:8px 10px;
       border-radius:20px;
       font-weight:700;
+      min-width:72px;
+      text-align:center;
     }
 
     .note{
@@ -139,6 +186,13 @@
       line-height:1.5;
       padding:0 10px;
     }
+
+    /* Responsive tweaks */
+    @media (max-width:420px){
+      .profile-snippet{height:150px}
+      .btn-telegram{padding:12px 20px;font-size:16px}
+      .wrap{padding:14px}
+    }
   </style>
 </head>
 
@@ -149,14 +203,19 @@
 
     <div class="brand-row">
       <div class="logo">
+        <!-- Small brand logo -->
         <img src="logo.jpeg" alt="Logo">
       </div>
 
-      <div class="profile-snippet">
-        <img src="pf.jpg" alt="Profile">
-        <div class="profile-info">
-          <div class="name">Trading Mentor Mahira</div>
-          <div class="meta">Forex Trader | Crypto | Nifty · 3 Years</div>
+      <!-- REPLACED: Full-card profile image block -->
+      <div style="flex:1">
+        <div class="profile-snippet">
+          <!-- Replace pf.jpg with your high-res portrait/banner image -->
+          <img src="pf.jpg" alt="Profile" class="full-img">
+          <div class="profile-info-overlay" aria-hidden="false">
+            <div class="name">Trading Mentor Mahira</div>
+            <div class="meta">Forex Trader | Crypto | Nifty · 3 Years</div>
+          </div>
         </div>
       </div>
     </div>
@@ -174,10 +233,10 @@
     </div>
 
     <div class="cta">
-      <a class="btn-telegram" href="https://telegram.me/+UAX1Fzq6LoA0NDll" target="_blank">View In Telegram</a>
+      <a class="btn-telegram" href="https://telegram.me/+UAX1Fzq6LoA0NDll" target="_blank" rel="noopener noreferrer">View In Telegram</a>
     </div>
 
-    <div class="timer-row">
+    <div class="timer-row" role="status" aria-live="polite">
       <div class="timer-pill" id="minutes">10 Min</div>
       <div class="timer-pill" id="seconds">00 Sec</div>
     </div>
@@ -187,33 +246,35 @@
     </div>
 
     <div class="footer-links">
-     
-      Ads Maintained By <a href="https://t.me/+ifc6dyg-xiA2ZGE1" target="_blank">Digital Ads Expert</a>
-      <br>
-      <br>
-       <a href="https://ElitePips.online/privacy" target="_blank">Privacy Policy</a> •
-      <a href="https://ElitePips.online/disclaimer" target="_blank">Disclaimer</a> •
-      <a href="https://ElitePips.online/terms" target="_blank">Terms & Conditions</a>
-    
+      Ads Maintained By <a href="https://t.me/+ifc6dyg-xiA2ZGE1" target="_blank" rel="noopener noreferrer">Digital Ads Expert</a>
+      <br><br>
+      <a href="https://ElitePips.online/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> •
+      <a href="https://ElitePips.online/disclaimer" target="_blank" rel="noopener noreferrer">Disclaimer</a> •
+      <a href="https://ElitePips.online/terms" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
     </div>
 
-    <div class="fb-disclaimer">
+    <div class="fb-disclaimer" aria-hidden="false">
       This site is not a part of the Facebook™️ website or Facebook Inc. Additionally, this site is NOT endorsed by Facebook™️ in any way. Facebook™️ is a trademark of Facebook Inc.
     </div>
 
   </div>
 
   <script>
+    // Simple countdown timer (start from 10 minutes)
     let remaining = 10 * 60;
     const mEl = document.getElementById("minutes");
     const sEl = document.getElementById("seconds");
 
     function updateTimer(){
-      if(remaining <= 0) return;
+      if(remaining <= 0){
+        mEl.textContent = "00 Min";
+        sEl.textContent = "00 Sec";
+        return;
+      }
       const m = Math.floor(remaining / 60);
       const s = remaining % 60;
-      mEl.textContent = (m<10?"0"+m:m)+" Min";
-      sEl.textContent = (s<10?"0"+s:s)+" Sec";
+      mEl.textContent = (m<10 ? "0"+m : m) + " Min";
+      sEl.textContent = (s<10 ? "0"+s : s) + " Sec";
       remaining--;
     }
     updateTimer();
